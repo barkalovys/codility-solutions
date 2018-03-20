@@ -1,24 +1,24 @@
 package solution
 
 func GenomicRangeQuery(S string, P []int, Q []int) []int {
-	res := make([]int, len(P))
-	//Array of prefix sums for each nucleotides:
+    res := make([]int, len(P))
+    //Array of prefix sums for each nucleotides:
     p := make([][4]uint16, len(S) + 1)
     p[0] = [4]uint16{0,0,0,0} 
     for i := 1; i < len(p); i++ {
         p[i] = p[i-1]
         switch S[i-1] {
-			//A
+	    //A
             case 65:
                 p[i][0] += 1
-			//C
-			case 67:
+	    //C
+            case 67:
                 p[i][1] += 1
-			//G
-			case  71:
+	    //G
+	    case  71:
                 p[i][2] += 1
-			//T
-			default:
+	    //T
+	    default:
                 p[i][3] += 1
         }
     }
